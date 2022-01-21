@@ -17,15 +17,12 @@
 | import './routes/customer'
 |
 */
-import Database from '@ioc:Adonis/Lucid/Database'
 import Route from '@ioc:Adonis/Core/Route'
+import 'App/Modules/User/routes'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
-
-Route.get('/users', async () => {
-  return Database.from('users').select('*')
-})
-
-Route.post('/login', 'AuthController.login')
+Route.group(() => {
+  Route.get('/hello', async () => {
+    return { hello: 'world' }
+  })
+  Route.post('/login', 'AuthController.login')
+}).prefix('/api')
