@@ -27,3 +27,5 @@ Route.get('/', async () => {
 Route.get('/users', async () => {
   return Database.from('users').select('*')
 })
+
+Route.post('/login', 'AuthController.login')
